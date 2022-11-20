@@ -57,22 +57,16 @@ int main () {
 			cout<<"Cantidad de este producto que se va a registrar: ";
 			cin>>cantidadMateria;
 			
-			
-			archivo << nombreProvedor << endl;
-			archivo << nombreMateria << endl;
-			archivo << precioMateria << endl;
-			
-			archivo.close();
-			if(cantidadMateria<20){
+			if(cantidadMateria>20){
 				
 				materia = new MateriaPrima(cantidadMateria,nombreMateria,proveedor,precioMateria);
 				comercio->agregarMateriaPrima(materia);
 				
 				cout<<"\nProveedor y articulos agregados con exito al inventario.\n";
-				
-				cout<<comercio->listadoProveedores();
+				cout<<"Articulo agregado: \n";
+				cout<<materia->toString();
 				cout<<endl;
-				cout<<comercio->listadoMateriaPrima();
+				
 			}else{
 				while(cantidadMateria<20){
 					
@@ -141,19 +135,32 @@ int main () {
 			cin>>nombreMateria;
 			materia = comercio->recuperarMateria(nombreMateria);
 			
+			system("cls");
+			
 			cout<<"Datos del articulo: \n";
-			cout<<materia->toString();
+			cout<<materia->toString()<<"\n";
 			
 			cout<<"Cuanta existencia desea vender: \n";
 			cin>>cantVenta;
 			
-			cout<<comercio->venta(nombreMateria,cantVenta);
+			cout<<"El total de la venta es de: "<<comercio->venta(nombreMateria,cantVenta)<<" sin contar impuestos."<<endl;
+			system("pause");
+			
+			if(materia->minimo()){
+				system("cls");
+				cout<<"------------------------------\n";
+				cout<<"------------------------------\n";
+				cout<<"ADVERTENCIA POCA EXISTENCIA\n";
+				cout<<"El producto "<<materia->getNombre()<<" esta por debajo de las 10 unidades existencia.\nSe debe de hacer un pedido nuevo.\n";
+				cout<<"------------------------------\n";
+				cout<<"------------------------------\n";
+			}
 			
 			archivo << "Materia Vendida: " << nombreMateria << endl;
 			archivo << "Cantidad Vendida: " << cantVenta << endl;
 			archivo << endl;
 			
-			archivo.close();
+			
 			system("pause");
 			break;
 		case 4:
@@ -175,8 +182,10 @@ int main () {
 		case 6:
 			system("cls");
 			cout<<"Saliendo del programa.";
-			return 0;
+			archivo.close();
+			delete comercio;
 			system("pause");
+			return 0;
 			break;
 		default: 
 			system("cls");
@@ -184,17 +193,6 @@ int main () {
 		}
 		
 	}
-	//	ofstream salida("datos.txt");
-	//	cout<<"Los datos se guardaron exitosamente ...";
-	//	comercio->guardar(salida);
-	//	salida.close();
-	
-	
-	
-	//	ifstream entrada("datos.txt");
-	//	MateriaPrima* materiaPrimaNueva = new MateriaPrima(entrada);
-	//	cout << materiaPrimaNueva -> toString();
-	//	entrada.close();
-	
+	archivo.close();
 	delete comercio;
 }

@@ -83,5 +83,3 @@ double Comercio::venta(string nombre, int cantVend){
 Rutas* Comercio::recuperarRuta(string nombre){
 	return rutas->recuperarRutas(nombre);
 }
-
-

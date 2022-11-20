@@ -13,6 +13,7 @@ public:
 	bool masElementos();
 	MateriaPrima* recuperarMateriaPrima(string);
 	double pagar(string,int);
+	string archivo();
 	
 private:
 	NodoMateriaPrima* primero;
