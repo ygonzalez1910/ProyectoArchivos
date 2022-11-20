@@ -6,14 +6,7 @@ using namespace std;
 
 int main () {
 	
-	/*
 	
-	ATENCION YULI TIENE QUE HACER QUE SE GUARDE MATERIA PRIMA, SOLO FIJISES
-	PORQUE NO SE ESTA GUARDANDO BIEN, SEGURO ES ALGO QUE ESTA MAL PUESTO
-	PERO SI CHOFER SE PUEDE MATERIA TAMBIEN, TEQUIERO MUCHA SUERTE ME VOY A COMER
-	
-	*/
-	fstream archivo("registro.txt");
 	Comercio* comercio = new Comercio();
 	int opc = 0, a = 0;
 	string nombreProvedor, nombreChofer, nombreRuta, nombreMateria;
@@ -25,6 +18,7 @@ int main () {
 	
 	comercio->RuPrede();
 	comercio->materiaProvePrede();
+	fstream archivo("registro.txt");
 	
 	for(;;){
 		
@@ -64,12 +58,17 @@ int main () {
 			cout<<"\nADVERTENCIA: Se tiene que agregar un minimo de 20 unidades por producto.\n";
 			cout<<"Cantidad de este producto que se va a registrar: ";
 			cin>>cantidadMateria;
+			
+			
 			archivo << nombreProvedor << endl;
 			archivo << nombreMateria << endl;
 			archivo << precioMateria << endl;
 			
 			archivo.close();
 			if(cantidadMateria<20){
+				
+				materia = new MateriaPrima(cantidadMateria,nombreMateria,proveedor,precioMateria);
+				comercio->agregarMateriaPrima(materia);
 				
 				cout<<"\nProveedor y articulos agregados con exito al inventario.\n";
 				
