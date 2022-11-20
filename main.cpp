@@ -6,7 +6,6 @@ using namespace std;
 
 int main () {
 	
-	
 	Comercio* comercio = new Comercio();
 	int opc = 0, a = 0;
 	string nombreProvedor, nombreChofer, nombreRuta, nombreMateria;
@@ -23,6 +22,7 @@ int main () {
 	for(;;){
 		
 		system("cls");
+		cout<<"Proyecto hecho por: Jeremy Duran y Yuliana Gonzalez"<<endl;
 		cout<<"Inventario: \n";
 		cout<<"---------------------------------------\n";
 		cout<<"1. Administrar materia prima y proveedor. \n";
@@ -144,7 +144,7 @@ int main () {
 			cin>>cantVenta;
 			
 			cout<<"El total de la venta es de: "<<comercio->venta(nombreMateria,cantVenta)<<" sin contar impuestos."<<endl;
-			system("pause");
+			
 			
 			if(materia->minimo()){
 				system("cls");
@@ -154,12 +154,12 @@ int main () {
 				cout<<"El producto "<<materia->getNombre()<<" esta por debajo de las 10 unidades existencia.\nSe debe de hacer un pedido nuevo.\n";
 				cout<<"------------------------------\n";
 				cout<<"------------------------------\n";
+				system("pause");
 			}
 			
 			archivo << "Materia Vendida: " << nombreMateria << endl;
 			archivo << "Cantidad Vendida: " << cantVenta << endl;
 			archivo << endl;
-			
 			
 			system("pause");
 			break;
@@ -181,7 +181,7 @@ int main () {
 			break;
 		case 6:
 			system("cls");
-			cout<<"Saliendo del programa.";
+			cout<<"Saliendo del programa."<<endl;
 			archivo.close();
 			delete comercio;
 			system("pause");

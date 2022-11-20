@@ -17,7 +17,6 @@ string MateriaPrima::toString(){
 	r <<"Materia Prima: " <<  nombre <<"\n";
 	r <<"Cantidad: " <<  cantidad <<"\n";
 	r <<"Precio: "<< precio <<"\n";
-	r <<"Cantidad vendida: "<< cantVendida << "\n";
 	r <<"-----------------------------\n";
 	return r.str();
 }
@@ -35,6 +34,7 @@ bool MateriaPrima::minimo(){
 }
 
 double MateriaPrima::pagar(int cantidadVendida){
+	
 	setCantVendida(cantidadVendida);
 	cantidad -= cantidadVendida;
 	return cantidadVendida*precio;
