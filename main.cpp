@@ -39,9 +39,7 @@ int main () {
 		switch(opc){
 		case 1: 
 			system("cls");
-			if(!archivo.is_open()){
-				archivo.open("registro.txt", ios::out);
-			}
+			
 			cout << "Agregando nuevo proveedor: \n";
 			cout << "Digite el nombre del proveedor:";
 			cin >> nombreProvedor;
@@ -133,6 +131,9 @@ int main () {
 			break;
 		case 3:
 			system("cls");
+			if(!archivo.is_open()){
+				archivo.open("registro.txt", ios::out);
+			}
 			cout<<"Venta:\n";
 			cout<<comercio->listadoMateriaPrima()<<endl;
 			
@@ -148,6 +149,11 @@ int main () {
 			
 			cout<<comercio->venta(nombreMateria,cantVenta);
 			
+			archivo << "Materia Vendida: " << nombreMateria << endl;
+			archivo << "Cantidad Vendida: " << cantVenta << endl;
+			archivo << endl;
+			
+			archivo.close();
 			system("pause");
 			break;
 		case 4:
