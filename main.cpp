@@ -45,9 +45,7 @@ int main () {
 		switch(opc){
 		case 1: 
 			system("cls");
-			if(!archivo.is_open()){
-				archivo.open("registro.txt", ios::out);
-			}
+			
 			cout << "Agregando nuevo proveedor: \n";
 			cout << "Digite el nombre del proveedor:";
 			cin >> nombreProvedor;
@@ -64,11 +62,7 @@ int main () {
 			cout<<"\nADVERTENCIA: Se tiene que agregar un minimo de 20 unidades por producto.\n";
 			cout<<"Cantidad de este producto que se va a registrar: ";
 			cin>>cantidadMateria;
-			archivo << nombreProvedor << endl;
-			archivo << nombreMateria << endl;
-			archivo << precioMateria << endl;
-			
-			archivo.close();
+		
 			if(cantidadMateria<20){
 				
 				cout<<"\nProveedor y articulos agregados con exito al inventario.\n";
@@ -134,6 +128,9 @@ int main () {
 			break;
 		case 3:
 			system("cls");
+			if(!archivo.is_open()){
+				archivo.open("registro.txt", ios::out);
+			}
 			cout<<"Venta:\n";
 			cout<<comercio->listadoMateriaPrima()<<endl;
 			
@@ -149,6 +146,11 @@ int main () {
 			
 			cout<<comercio->venta(nombreMateria,cantVenta);
 			
+			archivo << "Materia Vendida: " << nombreMateria << endl;
+			archivo << "Cantidad Vendida: " << cantVenta << endl;
+			archivo << endl;
+			
+			archivo.close();
 			system("pause");
 			break;
 		case 4:
